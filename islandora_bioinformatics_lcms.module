@@ -4,7 +4,7 @@
  * */
 function islandora_bioinformatics_lcms_islandora_required_objects(IslandoraTuque $connection) {
   $module_path = drupal_get_path('module', 'islandora_bioinformatics_lcms');
-  $lcms_cm = $connection->repository->constructObject('bioinformatics:lcms_cm');
+  $lcms_cm = $connection->repository->constructObject('islandora:lcms_cm');
   $lcms_cm->owner = 'fedoraAdmin';
   $lcms_cm->label = 'Bioinformatics LCMS Content Model';
   $lcms_cm->models = 'fedora-system:ContentModel-3.0';
@@ -36,9 +36,9 @@ function islandora_bioinformatics_lcms_islandora_xml_form_builder_form_associati
   $module_path = drupal_get_path('module', 'islandora_bioinformatics_lcms');
   return array(
     'islandora_bioinformatics_lcms_form' => array(
-      'lcms_cm' => 'bioinformatics:lcms',
+      'lcms_cm' => 'islandora:lcms',
       'form_name' => 'LCMS Form',
-      'dsid' => 'EML',
+      'dsid' => 'LCMS',
       'title_field' => array('taxonomy', 'species'),
       'transform' => '',
       //'self_transform' => "$module_path/xml/islandora_bioinformatics_lcms_transform.xsl",
@@ -46,3 +46,4 @@ function islandora_bioinformatics_lcms_islandora_xml_form_builder_form_associati
     ),
   );
 }
+
