@@ -30,3 +30,15 @@ function islandora_bioinformatics_specimen_upload_csv_form(array $form, array &f
 function islandora_bioinformatics_lcms_upload_csv_form_submit(array $form, array &$form_state) {
   $object = $form_state['islandora']['objects'][0];
   if (empty($object['CSV'])) {
+    $ds = $object->constructDatastream('CSV', 'M');
+    $object->ingestDatastream($ds);
+  }
+  else {
+    $ds = $object['CSV'];
+  }
+  $csv_file = file_load($form_sate['values']['file']);
+  $csv_path = drupal_realpath($csv_file->uri);
+  $ds->setContentFromFile($csv_path, false);
+  $ds->label = $csv_file->filename;
+  $ds->mimetype = $csv_file->filemim;
+}
