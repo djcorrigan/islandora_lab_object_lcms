@@ -68,3 +68,21 @@ function islandora_bioinformatics_lcms_islandora_lcmsCM_islandora_ingest_steps(a
   );
 }
 
+function islandora_bioinformatics_lcms_theme($existing, $type, $theme, $path) {
+  return array(
+    'islandora_bioinformatics_lcms' => array(
+      'file' => 'theme/theme.inc',
+      'template' => 'theme/lcms_theme',
+      'pattern' => 'islandora_bioinformatics_lcms__',
+      'variables' => array('islandora_object' => NULL),
+    ),
+  );
+}
+
+function islandora_bioinformatics_lcms_islandora_lcmsCM_islandora_view_object($object, $page_number, $page_size) {
+  $output = theme('islandora_bioinformatics_specimen', array('islandora_object' => $object));
+  return array('' => $output);
+}
+
+
+
