@@ -40,6 +40,6 @@ function islandora_bioinformatics_lcms_upload_raw_form_submit(array $form, array
   $raw_path = drupal_realpath($raw_file->uri);
   $ds->setContentFromFile($raw_path, false);
   $ds->label = $raw_file->filename;
-  $ds->mimetype = $raw_file->filemim;
+  $ds->mimetype = $raw_file->filemime;
 }
 

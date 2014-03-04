@@ -40,5 +40,5 @@ function islandora_bioinformatics_lcms_upload_csv_form_submit(array $form, array
   $csv_path = drupal_realpath($csv_file->uri);
   $ds->setContentFromFile($csv_path, false);
   $ds->label = $csv_file->filename;
-  $ds->mimetype = $csv_file->filemim;
+  $ds->mimetype = $csv_file->filemime;
 }
