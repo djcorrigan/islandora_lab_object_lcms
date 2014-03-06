@@ -47,10 +47,10 @@ function islandora_bioinformatics_lcms_islandora_xml_form_builder_form_associati
   $module_path = drupal_get_path('module', 'islandora_bioinformatics_lcms');
   return array(
     'islandora_bioinformatics_lcms_form' => array(
-      'lcms_cm' => 'islandora:lcms_cm',
+      'content_model' => 'islandora:lcms_cm',
       'form_name' => 'LCMS Form',
       'dsid' => 'LCMS',
-      'title_field' => array('taxonomy', 'species'),
+      'title_field' => array('run_title'),
       'transform' => '',
       //'self_transform' => "$module_path/xml/islandora_bioinformatics_lcms_transform.xsl",
       'template' => FALSE,
