@@ -15,7 +15,7 @@ function islandora_bioinformatics_specimen_upload_csv_form(array $form, array &f
   $form['file'] = array(
     '#title' => t('LCMS csv File'),
     '#type' => 'managed_file',
-    '#required' => false,
+    '#required' => FALSE,
     '#description' => t('Upload the sequence file.');
     '#default_value' => isset($form_state['values']['files']) ? form_state['values']['files'] : NULL,
     '#upload_location' => 'temporary://',
@@ -38,7 +38,7 @@ function islandora_bioinformatics_lcms_upload_csv_form_submit(array $form, array
   }
   $csv_file = file_load($form_sate['values']['file']);
   $csv_path = drupal_realpath($csv_file->uri);
-  $ds->setContentFromFile($csv_path, false);
+  $ds->setContentFromFile($csv_path, FALSE);
   $ds->label = $csv_file->filename;
   $ds->mimetype = $csv_file->filemime;
 }

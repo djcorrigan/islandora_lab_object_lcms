@@ -5,7 +5,7 @@
     handles uploading a raw file to an lcms as part of ingest
   */
 
-function islandora_bioinformatics_specimen_upload_raw_form(array $form, array &form_state) {
+function islandora_bioinformatics_lcms_upload_raw_form(array $form, array &form_state) {
 
   //sets the max upload size
   $upload_size = min((int) ini_get('post_max_size'), (int) ini_get('upload_max_filesize'));
@@ -15,7 +15,7 @@ function islandora_bioinformatics_specimen_upload_raw_form(array $form, array &f
   $form['file'] = array(
     '#title' => t('LCMS RAW File'),
     '#type' => 'managed_file',
-    '#required' => false,
+    '#required' => FALSE,
     '#description' => t('Upload the sequence file.');
     '#default_value' => isset($form_state['values']['files']) ? form_state['values']['files'] : NULL,
     '#upload_location' => 'temporary://',
@@ -38,7 +38,7 @@ function islandora_bioinformatics_lcms_upload_raw_form_submit(array $form, array
   }
   $raw_file = file_load($form_sate['values']['file']);
   $raw_path = drupal_realpath($raw_file->uri);
-  $ds->setContentFromFile($raw_path, false);
+  $ds->setContentFromFile($raw_path, FALSE);
   $ds->label = $raw_file->filename;
   $ds->mimetype = $raw_file->filemime;
 }
