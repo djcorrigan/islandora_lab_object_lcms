@@ -15,6 +15,7 @@ $path = drupal_get_path('module', 'islandora_bioinformatics_lcms');
 <div class="islandora-lcms-object islandora">
   <div class ="lcms_csv">
   <?php print $variables['islandora_csv'] ?>
+  <?php print $variables['islandora_raw'] ?>
   <?php print $variables['islandora_lcms'] ?>
   </div>
 </div>
