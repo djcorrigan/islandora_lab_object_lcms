@@ -16,7 +16,7 @@ function islandora_bioinformatics_lcms_upload_raw_form(array $form, array &$form
     '#title' => t('LCMS RAW File'),
     '#type' => 'managed_file',
     '#required' => FALSE,
-    '#description' => t('Upload the sequence file.'),
+    '#description' => t('Upload the raw file.'),
     '#default_value' => isset($form_state['values']['raw_file']) ? $form_state['values']['raw_file'] : NULL,
     '#upload_location' => 'temporary://',
     '#upload_validators' => array(
