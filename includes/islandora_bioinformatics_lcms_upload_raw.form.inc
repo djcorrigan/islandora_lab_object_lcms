@@ -5,7 +5,7 @@
     handles uploading a raw file to an lcms as part of ingest
   */
 
-function islandora_bioinformatics_lcms_upload_raw_form(array $form, array &form_state) {
+function islandora_bioinformatics_lcms_upload_raw_form(array $form, array &$form_state) {
 
   //sets the max upload size
   $upload_size = min((int) ini_get('post_max_size'), (int) ini_get('upload_max_filesize'));
