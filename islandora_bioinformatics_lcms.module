@@ -68,7 +68,7 @@ function islandora_bioinformatics_lcms_islandora_lcms_cm_islandora_ingest_steps(
       'file' => 'includes/islandora_bioinformatics_lcms_upload_csv.form.inc'
     ),
     'islandora_bioinformatics_lcms_raw_file_upload' => array(
-      'weight' => 7,
+      'weight' => 9,
       'type' => 'form',
       'form_id' => 'islandora_bioinformatics_lcms_upload_raw_form',
       'module' => 'islandora_bioinformatics_lcms',
