@@ -12,7 +12,7 @@ function islandora_bioinformatics_lcms_upload_raw_form(array $form, array &$form
   $extensions = array('raw');
   $form = array();
 
-  $form['file'] = array(
+  $form['RAWfile'] = array(
     '#title' => t('LCMS RAW File'),
     '#type' => 'managed_file',
     '#required' => FALSE,
@@ -36,7 +36,7 @@ function islandora_bioinformatics_lcms_upload_raw_form_submit(array $form, array
   else {
     $ds = $object['RAW'];
   }
-  $raw_file = file_load($form_state['values']['file']);
+  $raw_file = file_load($form_state['values']['RAWfile']);
   $raw_path = drupal_realpath($raw_file->uri);
   $ds->setContentFromFile($raw_path, FALSE);
   $ds->label = $raw_file->filename;

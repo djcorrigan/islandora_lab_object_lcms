@@ -12,7 +12,7 @@ function islandora_bioinformatics_lcms_upload_csv_form(array $form, array &$form
   $extensions = array('csv');
   $form = array();
 
-  $form['file'] = array(
+  $form['CSVfile'] = array(
     '#title' => t('LCMS csv File'),
     '#type' => 'managed_file',
     '#required' => FALSE,
@@ -36,7 +36,7 @@ function islandora_bioinformatics_lcms_upload_csv_form_submit(array $form, array
   else {
     $ds = $object['CSV'];
   }
-  $csv_file = file_load($form_state['values']['file']);
+  $csv_file = file_load($form_state['values']['CSVfile']);
   $csv_path = drupal_realpath($csv_file->uri);
   $ds->setContentFromFile($csv_path, FALSE);
   $ds->label = $csv_file->filename;
