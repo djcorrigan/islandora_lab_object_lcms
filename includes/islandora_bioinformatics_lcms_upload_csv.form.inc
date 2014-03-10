@@ -17,7 +17,7 @@ function islandora_bioinformatics_lcms_upload_csv_form(array $form, array &$form
     '#type' => 'managed_file',
     '#required' => FALSE,
     '#description' => t('Upload the sequence file.'),
-    '#default_value' => isset($form_state['values']['files']) ? $form_state['values']['files'] : NULL,
+    '#default_value' => isset($form_state['values']['csv_file']) ? $form_state['values']['csv_file'] : NULL,
     '#upload_location' => 'temporary://',
     '#upload_validators' => array(
       'file_validate_extensions' => $extensions,
