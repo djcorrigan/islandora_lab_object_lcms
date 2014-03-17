@@ -22,6 +22,9 @@ function islandora_bioinformatics_lcms_islandora_required_objects(IslandoraTuque
   $datastream->mimetype = 'text/xml';
   $datastream->setContentFromFile("$module_path/xml/lcms_ds_composite_model.xml", FALSE);
   $lcms_cm->ingestDatastream($datastream);
+  
+  //Create relationship with LabObject
+  $lcms_cm->relationships->add(FEDORA_MODEL_URI, 'hasModel', 'islandora:lab_object_cmodel');
 
   $lcms_collection = $connection->repository->constructObject('islandora:lcms_collection');
   $lcms_collection->owner = 'fedoraAdmin';
