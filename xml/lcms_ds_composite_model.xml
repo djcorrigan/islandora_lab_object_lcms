@@ -10,4 +10,5 @@
   <dsTypeModel ID="RAW"> 
     <form MIME="text/plain"/> 
   </dsTypeModel>
+  <dsTypeModel ID="POLICY" optional="true"> <form MIME="text/xml" /> </dsTypeModel>
 </dsCompositeModel>
