@@ -8,6 +8,11 @@ function islandora_bioinformatics_lcms_islandora_required_objects(IslandoraTuque
   $lcms_cm->owner = 'fedoraAdmin';
   $lcms_cm->label = 'Bioinformatics LCMS Content Model';
   $lcms_cm->models = 'fedora-system:ContentModel-3.0';
+
+  // RELS
+  $lcms_cm->relationships->add(FEDORA_MODEL_URI, 'hasModel', 'islandora:lab_object_cmodel');
+  $lcms_cm->relationships->add("", 'datarelSpecimen', 'islandora:specimen_cmodel');
+
   // DS-COMPOSITE-MODEL Datastream.
   $datastream = $lcms_cm->constructDatastream('DS-COMPOSITE-MODEL', 'X');
   $datastream->mimetype = 'text/xml';
