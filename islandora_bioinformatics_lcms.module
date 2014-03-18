@@ -1,4 +1,13 @@
 <?php
+
+/*
+@file
+
+Module for LCMS
+
+*/
+
+
 /**
  * * Implements hook_islandora_required_objects()
  * */
@@ -18,6 +27,22 @@ function islandora_bioinformatics_lcms_islandora_required_objects(IslandoraTuque
   $datastream->mimetype = 'text/xml';
   $datastream->setContentFromFile("$module_path/xml/lcms_ds_composite_model.xml", FALSE);
   $lcms_cm->ingestDatastream($datastream);
+  
+  //Create relationship with LabObject
+  $lcms_cm->relationships->add(FEDORA_MODEL_URI, 'hasModel', 'islandora:lab_object_cmodel');
+
+  $lcms_collection = $connection->repository->constructObject('islandora:lcms_collection');
+  $lcms_collection->owner = 'fedoraAdmin';
+  $lcms_collection->label = 'LCMS Collection';
+  $lcms_collection->models = 'islandora:collectionCModel';
+  $lcms_collection->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', 'islandora:root');
+  $datastream = $lcms_collection->constructDatastream('COLLECTION_POLICY', 'X');
+  $datastream->mimetype = 'text/xml';
+  $datastream->setContentFromFile("$module_path/xml/lcms_collection_policy.xml", FALSE);
+  $lcms_collection->ingestDatastream($datastream);
+
+
+
   return array(
     'islandora_bioinformatics_lcms' => array(
       'title' => 'Bioinformatics LCMS',
@@ -28,6 +53,7 @@ function islandora_bioinformatics_lcms_islandora_required_objects(IslandoraTuque
   );
 }
 
+
 function islandora_bioinformatics_lcms_islandora_xml_form_builder_forms() {
   $module_path = drupal_get_path('module', 'islandora_bioinformatics_lcms');
   return array(
@@ -37,18 +63,56 @@ function islandora_bioinformatics_lcms_islandora_xml_form_builder_forms() {
   );
 }
 
+
 function islandora_bioinformatics_lcms_islandora_xml_form_builder_form_associations() {
   $module_path = drupal_get_path('module', 'islandora_bioinformatics_lcms');
   return array(
     'islandora_bioinformatics_lcms_form' => array(
-      'lcms_cm' => 'islandora:lcms',
+      'content_model' => 'islandora:lcms_cm',
       'form_name' => 'LCMS Form',
       'dsid' => 'LCMS',
-      'title_field' => array('taxonomy', 'species'),
+      'title_field' => array('run_title'),
       'transform' => '',
       //'self_transform' => "$module_path/xml/islandora_bioinformatics_lcms_transform.xsl",
       'template' => FALSE,
     ),
   );
 }
+
+function islandora_bioinformatics_lcms_islandora_lcms_cm_islandora_ingest_steps(array $configuration) {
+  return array(
+    'islandora_bioinformatics_lcms_csv_file_upload' => array(
+      'weight' => 8,
+      'type' => 'form',
+      'form_id' => 'islandora_bioinformatics_lcms_upload_csv_form',
+      'module' => 'islandora_bioinformatics_lcms',
+      'file' => 'includes/islandora_bioinformatics_lcms_upload_csv.form.inc'
+    ),
+    'islandora_bioinformatics_lcms_raw_file_upload' => array(
+      'weight' => 9,
+      'type' => 'form',
+      'form_id' => 'islandora_bioinformatics_lcms_upload_raw_form',
+      'module' => 'islandora_bioinformatics_lcms',
+      'file' => 'includes/islandora_bioinformatics_lcms_upload_raw.form.inc'
+    )
+  );
+}
+
+function islandora_bioinformatics_lcms_theme($existing, $type, $theme, $path) {
+  return array(
+    'islandora_bioinformatics_lcms' => array(
+      'file' => 'theme/theme.inc',
+      'template' => 'theme/lcms_theme',
+      'pattern' => 'islandora_bioinformatics_lcms__',
+      'variables' => array('islandora_object' => NULL),
+    ),
+  );
+}
+
+function islandora_bioinformatics_lcms_islandora_lcms_cm_islandora_view_object($object, $page_number, $page_size) {
+  $output = theme('islandora_bioinformatics_lcms', array('islandora_object' => $object));
+  return array('' => $output);
+}
+
+
 
