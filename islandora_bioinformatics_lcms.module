@@ -30,7 +30,7 @@ function islandora_bioinformatics_lcms_islandora_required_objects(IslandoraTuque
   
   //Create relationship with LabObject
   $lcms_cm->relationships->add(FEDORA_MODEL_URI, 'hasModel', 'islandora:lab_object_cmodel');
-  $lcms_cm->relationships->add("", 'datarel:specimen', 'islandora:specimen_cmodel');
+  $lcms_cm->relationships->add("", 'datarel_specimen', 'islandora:specimen_cmodel');
 
   $lcms_collection = $connection->repository->constructObject('islandora:lcms_collection');
   $lcms_collection->owner = 'fedoraAdmin';
