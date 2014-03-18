@@ -13,7 +13,7 @@ Module for LCMS
  * */
 function islandora_bioinformatics_lcms_islandora_required_objects(IslandoraTuque $connection) {
   $module_path = drupal_get_path('module', 'islandora_bioinformatics_lcms');
-  $lcms_cm = $connection->repository->constructObject('islandora:lcms_cm');
+  $lcms_cm = $connection->repository->constructObject('islandora:lcms_cmodel');
   $lcms_cm->owner = 'fedoraAdmin';
   $lcms_cm->label = 'Bioinformatics LCMS Content Model';
   $lcms_cm->models = 'fedora-system:ContentModel-3.0';
