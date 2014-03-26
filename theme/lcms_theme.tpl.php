@@ -8,7 +8,7 @@
 */
 
 $islandora_content = $islandora_object['LCMS']->content;
-$path = drupal_get_path('module', 'islandora_bioinformatics_lcms');
+$path = drupal_get_path('module', 'islandora_lab_object_lcms');
 
 ?>
 
