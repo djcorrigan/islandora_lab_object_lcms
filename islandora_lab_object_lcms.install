@@ -1,0 +1,28 @@
+<?php
+
+/**
+  * @file
+  * islandora_lab_object_lcms.install
+  */
+
+/**
+  * Implements hook_install().
+  *
+  * @see islandora_lab_object_lcms_islandora_required_objects()
+  */
+  function islandora_lab_object_lcms_install() {
+    module_load_include('inc', 'islandora', 'includes/solution_packs');
+    islandora_install_solution_pack('islandora_lab_object_lcms');
+  }
+
+/**
+  * Implements hook_uninstall().
+  */
+  function islandora_lab_object_lcms_uninstall() {
+    module_load_include('inc', 'islandora', 'includes/solution_packs');
+    islandora_install_solution_pack('islandora_lab_object_lcms', 'uninstall');
+    $variables = array('islandora_lab_object_lcms');
+    array_walk($variables, 'variable_del');
+  }
+
+
