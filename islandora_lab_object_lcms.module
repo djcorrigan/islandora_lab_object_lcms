@@ -20,7 +20,6 @@ function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $co
 
   // RELS
   $lcms_cm->relationships->add(FEDORA_MODEL_URI, 'hasModel', 'islandora:lab_object_cmodel');
-  $lcms_cm->relationships->add("", 'datarelSpecimen', 'islandora:specimen_cmodel');
 
   // DS-COMPOSITE-MODEL Datastream.
   $datastream = $lcms_cm->constructDatastream('DS-COMPOSITE-MODEL', 'X');
@@ -30,7 +29,6 @@ function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $co
   
   //Create relationship with LabObject
   $lcms_cm->relationships->add(FEDORA_MODEL_URI, 'hasModel', 'islandora:lab_object_cmodel');
-  $lcms_cm->relationships->add("", 'datarel_specimen', 'islandora:specimen_cmodel');
 
   $lcms_collection = $connection->repository->constructObject('islandora:lcms_collection');
   $lcms_collection->owner = 'fedoraAdmin';
@@ -42,6 +40,15 @@ function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $co
   $datastream->setContentFromFile("$module_path/xml/lcms_collection_policy.xml", FALSE);
   $lcms_collection->ingestDatastream($datastream);
 
+  // relationships between lcms and specimen/assay
+  $specimen_cm = islandora_object_load("islandora:specimen_cmodel");
+  $specimen_cm->relationships->add(FEDORA_RELS_EXT_URI, 'datarel_hasPart', 'islandora:lcms_cmodel');
+
+  $assay_cm = islandora_object_load("islandora:assay_cmodel");
+  $assay_cm->relationships->add(FEDORA_RELS_EXT_URI, 'datarel_hasPart', 'islandora:lcms_cmodel');
+
+  $lcms_cm->relationships->add(FEDORA_RELS_EXT_URI, 'datarel_isPartOf', 'islandora:assay_cmodel');
+  $lcms_cm->relationships->add(FEDORA_RELS_EXT_URI, 'datarel_isPartOf', 'islandora:specimen_cmodel');
 
 
   return array(
