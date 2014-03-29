@@ -46,11 +46,11 @@ function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $co
   $specimen_cm = islandora_object_load("islandora:specimen_cmodel");
   $assay_cm = islandora_object_load("islandora:assay_cmodel");
 
-  //add_hasPart($specimen_cm, "islandora:lcms_cmodel");
-  //add_hasPart($assay_cm, "islandora:lcms_cmodel");
+  add_hasPart($specimen_cm, "islandora:lcms_cmodel");
+  add_hasPart($assay_cm, "islandora:lcms_cmodel");
 
-  //add_isPartOf($lcms_cm, "islandora:specimen_cmodel");
-  //add_isPart($lcms_cm, "islandora:assay_cmodel");
+  add_isPartOf($lcms_cm, "islandora:specimen_cmodel");
+  add_isPartOf($lcms_cm, "islandora:assay_cmodel");
 
   return array(
     'islandora_lab_object_lcms' => array(
