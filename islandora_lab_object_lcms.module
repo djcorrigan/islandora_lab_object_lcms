@@ -12,6 +12,8 @@ Module for LCMS
  * * Implements hook_islandora_required_objects()
  * */
 function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $connection) {
+  module_load_include('inc', 'islandora_bioinformatics_base', 'base_functions');
+
   $module_path = drupal_get_path('module', 'islandora_lab_object_lcms');
   $lcms_cm = $connection->repository->constructObject('islandora:lcms_cmodel');
   $lcms_cm->owner = 'fedoraAdmin';
@@ -42,14 +44,13 @@ function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $co
 
   // relationships between lcms and specimen/assay
   $specimen_cm = islandora_object_load("islandora:specimen_cmodel");
-  $specimen_cm->relationships->add(FEDORA_RELS_EXT_URI, 'datarel_hasPart', 'islandora:lcms_cmodel');
-
   $assay_cm = islandora_object_load("islandora:assay_cmodel");
-  $assay_cm->relationships->add(FEDORA_RELS_EXT_URI, 'datarel_hasPart', 'islandora:lcms_cmodel');
 
-  $lcms_cm->relationships->add(FEDORA_RELS_EXT_URI, 'datarel_isPartOf', 'islandora:assay_cmodel');
-  $lcms_cm->relationships->add(FEDORA_RELS_EXT_URI, 'datarel_isPartOf', 'islandora:specimen_cmodel');
+  add_hasPart($specimen_cm, "islandora:lcms_cmodel");
+  add_hasPart($assay_cm, "islandora:lcms_cmodel");
 
+  add_isPartOf($lcms_cm, "islandora:specimen_cmodel");
+  add_isPart($lcms_cm, "islandora:assay_cmodel");
 
   return array(
     'islandora_lab_object_lcms' => array(
