@@ -7,6 +7,17 @@ Module for LCMS
 
 */
 
+function islandora_lab_object_genesequence_menu(){
+  return array(
+    'islandora/object/%islandora_object/test_ingest_lcms' => array(
+        'title' => 'Ingest LCMS',
+        'page callback' => 'rel_lab_object_lcms_ingest',
+        'page arguments' => array(2),
+        'access callback' => TRUE,
+      )
+  );
+}
+
 
 /**
  * * Implements hook_islandora_required_objects()
@@ -121,6 +132,15 @@ function islandora_lab_object_lcms_theme($existing, $type, $theme, $path) {
 function islandora_lab_object_lcms_islandora_lcms_cm_islandora_view_object($object, $page_number, $page_size) {
   $output = theme('islandora_lab_object_lcms', array('islandora_object' => $object));
   return array('' => $output);
+}
+
+/**
+* @author Quintin Dawson qdawson@upei.ca
+*/
+function rel_lab_object_lcms_ingest($object) {
+
+
+
 }
 
 
