@@ -7,7 +7,7 @@ Module for LCMS
 
 */
 
-function islandora_lab_object_genesequence_menu(){
+function islandora_lab_object_lcms_menu(){
   return array(
     'islandora/object/%islandora_object/test_ingest_lcms' => array(
         'title' => 'Ingest LCMS',
