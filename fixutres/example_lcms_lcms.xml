@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<lcms:lcms xmlns:lcms="http://107.170.42.52" xmlns="http://107.170.42.52" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <lcms:run_title>Example Title</lcms:run_title>
+    <lcms:sample_info>
+      <lcms:seq_name> Dalton's Sequence </lcms:seq_name>
+      <lcms:user_select>Josh D</lcms:user_select>
+      <lcms:solvent>
+        <lcms:methanol_solvent>0</lcms:methanol_solvent>
+        <lcms:acetonitrile_solvent>1</lcms:acetonitrile_solvent>
+        <lcms:other_solvent>0</lcms:other_solvent>
+      </lcms:solvent>
+      <lcms:concentration>
+        <lcms:onehundred_microlitres>0</lcms:onehundred_microlitres>
+        <lcms:fivehundred_microlitres>1</lcms:fivehundred_microlitres>
+        <lcms:other_concentration>0</lcms:other_concentration>
+      </lcms:concentration>
+      <lcms:other_conc_solv/>
+        <lcms:sample_origin>Combiflash C18</lcms:sample_origin>
+      <lcms:other_protocol/>
+      <lcms:sample_info>
+        <lcms:analysis_required>
+          <lcms:sample_intro>Direct Infusion</lcms:sample_intro>
+          <lcms:detection_ionization>
+            <lcms:esi_neg>0</lcms:esi_neg>
+            <lcms:esi_pos>1</lcms:esi_pos>
+            <lcms:apci_neg>0</lcms:apci_neg>
+            <lcms:apci_pos>0</lcms:apci_pos>
+            <lcms:pda>1</lcms:pda>
+            <lcms:elsd>1</lcms:elsd>
+            <lcms:ei>0</lcms:ei>
+          </lcms:detection_ionization>
+          <lcms:mass_range>m/z 120 - 800</lcms:mass_range>
+          <lcms:lc_solvent_system>Other</lcms:lc_solvent_system>
+          <lcms:types_of_analysis>Chemical Screening</lcms:types_of_analysis>
+          <lcms:specific_analysis>We did some specific analysis things.. and such</lcms:specific_analysis>
+          <lcms:ions_of_interest>The interesting ones</lcms:ions_of_interest>
+        </lcms:analysis_required>
+        <lcms:internal_use_only>
+          <lcms:analyst>Fabrice</lcms:analyst>
+          <lcms:date/>
+          <lcms:instrument>Thermo LTQ Exactive</lcms:instrument>
+          <lcms:method>Drug Discovery</lcms:method>
+          <lcms:solvent_system>Other</lcms:solvent_system>
+          <lcms:column_used>Core Shell Kinetex</lcms:column_used>
+          <lcms:datapath/>
+          <lcms:comments_for_analyst>Sure why not.</lcms:comments_for_analyst>
+        </lcms:internal_use_only>
+  </lcms:lcms>
