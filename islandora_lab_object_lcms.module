@@ -234,7 +234,7 @@ function islandora_bioinformatics_lcms_lab_object_load_ingest_configuration(Abst
 */
 function lcms_LCMS_to_array($lcms_object) {
   
-  $ns = "http://107.170.42.52/lcms.xsd"
+  $ns = "http://107.170.42.52/lcms.xsd";
   $lcms_xml = new SimpleXMLElement($lcms_object["LCMS"]->content);
 
   $lcms_metadata = array();
