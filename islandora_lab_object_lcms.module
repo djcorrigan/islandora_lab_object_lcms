@@ -219,5 +219,137 @@ function islandora_bioinformatics_lcms_lab_object_load_ingest_configuration(Abst
   );
 }
 
+/**
+* @function lcms_LCMS_to_array
+* This function will take in an lcms object, and then construct an array from
+* its LCMS datastream, containing all of its relevant metadata.
+* This metadata can then be used in the forms displaying info about the lcms object.
+*
+* @author Dalton Mackenzie <demackenzie@upei.ca>
+*
+* @param $lcms_object
+*  An lcms object
+* @return $lcms_metadata
+*  an array containing the lcms meta-data
+*/
+function lcms_LCMS_to_array($lcms_object) {
+  
+  $ns = "http://107.170.42.52/lcms.xsd"
+  $lcms_xml = new SimpleXMLElement($lcms_object["LCMS"]->content);
+
+  $lcms_metadata = array();
+
+  foreach ($lcms_xml->children($ns) as $part) {
+    switch ((string) $part->getName()) {
+      case "run_title":
+        $lcms_metadata["run_title"] = ((string)$part) ? (string)$part:"";
+        break;
+      case "sample_info":
+        //Get the sequence name
+        $seq_name = $part->seq_name;
+        $lcms_metadata["seq_name"] = ((string)$seq_name) ? (string)$seq_name:"";
+        //Get the user the lcms is for
+        $user_select = $part->user_select;
+        $lcms_metadata["user_select"] = ((string)$user_select) ? (string)$user_select:"";
+        //Get the solvent
+        $meoh_solv = $part->solvent->methanol_solvent;
+        $lcms_metadata["meoh_solv"] = ((string)$meoh_solv ? (string)$meoh_solv:"";
+        $acetonitrile_solv = $part->solvent->acetonitrile_solvent;
+        $lcms_metadata["acetonitrile_solv"] = ((string)$acetonitrile_solv ? (string)$acetonitrile_solv:"";
+        $other_solv = $part->solvent->other_solvent;
+        $lcms_metadata["other_solv"] = ((string)$other_solv ? (string)$other_solv:"";
+        //Get the solvent concentration
+        $conc_100 = $part->concentration->onehundred_microlitres;
+        $lcms_metadata["conc_100"] = ((string)$conc_100 ? (string)$conc_100:"";
+        $conc_500 = $part->concentration->fivehundred_microlitres;
+        $lcms_metadata["conc_500"] = ((string)$conc_500 ? (string)$conc_500:"";
+        $conc_other = $part->concentration->other_concentration;
+        $lcms_metadata["conc_other"] = ((string)$conc_other ? (string)$conc_other:"";
+        //Get other concentration/solvent details
+        $other_conc_solv = $part->other_conc_solv;
+        $lcms_metadata["other_conc_solv"] = ((string)$other_conc_solv ? (string)$other_conc_solv:"";
+        $samp_ori = $part->sample_origin;
+        $lcms_metadata["samp_ori"] = ((string)$samp_ori ? (string)$samp_ori:"";
+        $other_protocol = $part->other_protocol;
+        $lcms_metadata["other_protocol"] = ((string)$other_protocol ? (string)$other_protocol:"";
+        break; //End sample_info
+      case "analysis_required":
+       
+       
+        //Get the sample intro
+        $samp_intro = $part->sample_intro;
+        $lcms_metadata["samp_intro"] = ((string)$samp_intro) ? (string)$samp_intro:"";
+        //Get the different detection ionization values
+        $esi_neg = $part->detection_ionization->esi_neg;
+        $lcms_metadata["esi_neg"] = ((string)$esi_neg) ? (string)$esi_neg:"";
+        $esi_pos = $part->detection_ionization->esi_pos;
+        $lcms_metadata["esi_pos"] = ((string)$esi_pos) ? (string)$esi_pos:"";
+        $apci_neg = $part->detection_ionization->apci_neg;
+        $lcms_metadata["apci_neg"] = ((string)$apci_neg) ? (string)$apci_neg:"";
+        $apci_pos = $part->detection_ionization->apci_pos;
+        $lcms_metadata["apci_pos"] = ((string)$apci_pos) ? (string)$apci_pos:"";
+        $pda = $part->detection_ionization->pda;
+        $lcms_metadata["pda"] = ((string)$pda) ? (string)$pda:"";
+        $elsd = $part->detection_ionization->elsd;
+        $lcms_metadata["elsd"] = ((string)$elsd) ? (string)$elsd:"";
+        $ei = $part->detection_ionization->ei;
+        $lcms_metadata["ei"] = ((string)$ei) ? (string)$ei:"";
+        //Get the mass range
+        $mass_range = $part->mass_range;
+        $lcms_metadata["mass_range"] = ((string)$mass_range ? (string)$mass_range:"";
+        //Get the lc solvent system
+        $lc_solvent_sys = $part->lc_solvent_system;
+        $lcms_metadata["lc_solvent_sys"] = ((string)$lc_solvent_sys ? (string)$lc_solvent_sys:"";
+        //Get the types of analysis
+        $types_of_analysis = $part->types_of_analysis;
+        $lcms_metadata["types_of_analysis"] = ((string)$types_of_analysis ? (string)$types_of_analysis:"";
+        //Get the specific analysis
+        $specific_analysis = $part->specific_analysis;
+        $lcms_metadata["specific_analysis"] = ((string)$specific_analysis ? (string)$specific_analysis:"";
+        //Get the ions of interest
+        $ions_of_interest = $part->ions_of_interest;
+        $lcms_metadata["ions_of_interest"] = ((string)$ions_of_interest ? (string)$ions_of_interest:"";
+
+        break;
+      case "internal_use_only":
+
+        //Get the analyst
+        $analyst = $part->analyst;
+        $lcms_metadata["analyst"] = ((string)$analyst ? (string)$analyst:"";
+
+        //Get the date
+        $date = $part->date;
+        $lcms_metadata["date"] = ((string)$date ? (string)$date:"";
+
+        //Get the instrument
+        $instrument = $part->instrument;
+        $lcms_metadata["instrument"] = ((string)$instrument ? (string)$instrument:"";
+        
+        //Get the method
+        $method = $part->method;
+        $lcms_metadata["method"] = ((string)$method ? (string)$method:"";
+
+        //Get the solvent_system
+        $solvent_system = $part->solvent_system;
+        $lcms_metadata["solvent_system"] = ((string)$solvent_system ? (string)$solvent_system:"";
+
+        //Get the column_used
+        $column_used = $part->column_used;
+        $lcms_metadata["column_used"] = ((string)$column_used ? (string)$column_used:"";
+
+        //Get the datapath
+        $datapath = $part->datapath;
+        $lcms_metadata["datapath"] = ((string)$datapath ? (string)$datapath:"";
+
+        //Get the comments_for_analyst
+        $comments_for_analyst = $part->comments_for_analyst;
+        $lcms_metadata["comments_for_analyst"] = ((string)$comments_for_analyst ? (string)$comments_for_analyst:"";
+
+        break;
+      }
+  }
+
+  return $lcms_metadata;
+}
 
 
