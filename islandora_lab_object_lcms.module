@@ -253,7 +253,7 @@ function lcms_LCMS_to_array($lcms_object) {
         $lcms_metadata["user_select"] = ((string)$user_select) ? (string)$user_select:"";
         //Get the solvent
         $meoh_solv = $part->solvent->methanol_solvent;
-        $lcms_metadata["meoh_solv"] = ((string)$meoh_solv ? (string)$meoh_solv:"";
+        $lcms_metadata["meoh_solv"] = ((string)$meoh_solv ? (string)$meoh_solv:"");
         $acetonitrile_solv = $part->solvent->acetonitrile_solvent;
         $lcms_metadata["acetonitrile_solv"] = ((string)$acetonitrile_solv ? (string)$acetonitrile_solv:"";
         $other_solv = $part->solvent->other_solvent;
