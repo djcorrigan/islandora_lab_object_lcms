@@ -315,35 +315,35 @@ function lcms_LCMS_to_array($lcms_object) {
 
         //Get the analyst
         $analyst = $part->analyst;
-        $lcms_metadata["analyst"] = ((string)$analyst ? (string)$analyst:"";
+        $lcms_metadata["analyst"] = ((string)$analyst ? (string)$analyst:"");
 
         //Get the date
         $date = $part->date;
-        $lcms_metadata["date"] = ((string)$date ? (string)$date:"";
+        $lcms_metadata["date"] = ((string)$date ? (string)$date:"");
 
         //Get the instrument
         $instrument = $part->instrument;
-        $lcms_metadata["instrument"] = ((string)$instrument ? (string)$instrument:"";
+        $lcms_metadata["instrument"] = ((string)$instrument ? (string)$instrument:"");
         
         //Get the method
         $method = $part->method;
-        $lcms_metadata["method"] = ((string)$method ? (string)$method:"";
+        $lcms_metadata["method"] = ((string)$method ? (string)$method:"");
 
         //Get the solvent_system
         $solvent_system = $part->solvent_system;
-        $lcms_metadata["solvent_system"] = ((string)$solvent_system ? (string)$solvent_system:"";
+        $lcms_metadata["solvent_system"] = ((string)$solvent_system ? (string)$solvent_system:"");
 
         //Get the column_used
         $column_used = $part->column_used;
-        $lcms_metadata["column_used"] = ((string)$column_used ? (string)$column_used:"";
+        $lcms_metadata["column_used"] = ((string)$column_used ? (string)$column_used:"");
 
         //Get the datapath
         $datapath = $part->datapath;
-        $lcms_metadata["datapath"] = ((string)$datapath ? (string)$datapath:"";
+        $lcms_metadata["datapath"] = ((string)$datapath ? (string)$datapath:"");
 
         //Get the comments_for_analyst
         $comments_for_analyst = $part->comments_for_analyst;
-        $lcms_metadata["comments_for_analyst"] = ((string)$comments_for_analyst ? (string)$comments_for_analyst:"";
+        $lcms_metadata["comments_for_analyst"] = ((string)$comments_for_analyst ? (string)$comments_for_analyst:"");
 
         break;
       }
