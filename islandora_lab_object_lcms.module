@@ -255,23 +255,23 @@ function lcms_LCMS_to_array($lcms_object) {
         $meoh_solv = $part->solvent->methanol_solvent;
         $lcms_metadata["meoh_solv"] = ((string)$meoh_solv ? (string)$meoh_solv:"");
         $acetonitrile_solv = $part->solvent->acetonitrile_solvent;
-        $lcms_metadata["acetonitrile_solv"] = ((string)$acetonitrile_solv ? (string)$acetonitrile_solv:"";
+        $lcms_metadata["acetonitrile_solv"] = ((string)$acetonitrile_solv ? (string)$acetonitrile_solv:"");
         $other_solv = $part->solvent->other_solvent;
-        $lcms_metadata["other_solv"] = ((string)$other_solv ? (string)$other_solv:"";
+        $lcms_metadata["other_solv"] = ((string)$other_solv ? (string)$other_solv:"");
         //Get the solvent concentration
         $conc_100 = $part->concentration->onehundred_microlitres;
-        $lcms_metadata["conc_100"] = ((string)$conc_100 ? (string)$conc_100:"";
+        $lcms_metadata["conc_100"] = ((string)$conc_100 ? (string)$conc_100:"");
         $conc_500 = $part->concentration->fivehundred_microlitres;
-        $lcms_metadata["conc_500"] = ((string)$conc_500 ? (string)$conc_500:"";
+        $lcms_metadata["conc_500"] = ((string)$conc_500 ? (string)$conc_500:"");
         $conc_other = $part->concentration->other_concentration;
-        $lcms_metadata["conc_other"] = ((string)$conc_other ? (string)$conc_other:"";
+        $lcms_metadata["conc_other"] = ((string)$conc_other ? (string)$conc_other:"");
         //Get other concentration/solvent details
         $other_conc_solv = $part->other_conc_solv;
-        $lcms_metadata["other_conc_solv"] = ((string)$other_conc_solv ? (string)$other_conc_solv:"";
+        $lcms_metadata["other_conc_solv"] = ((string)$other_conc_solv ? (string)$other_conc_solv:"");
         $samp_ori = $part->sample_origin;
-        $lcms_metadata["samp_ori"] = ((string)$samp_ori ? (string)$samp_ori:"";
+        $lcms_metadata["samp_ori"] = ((string)$samp_ori ? (string)$samp_ori:"");
         $other_protocol = $part->other_protocol;
-        $lcms_metadata["other_protocol"] = ((string)$other_protocol ? (string)$other_protocol:"";
+        $lcms_metadata["other_protocol"] = ((string)$other_protocol ? (string)$other_protocol:"");
         break; //End sample_info
       case "analysis_required":
        
