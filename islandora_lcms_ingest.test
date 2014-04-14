@@ -69,7 +69,7 @@ class IslandoraLCMSIngestTestCase extends IslandoraWebTestCase {
     $path = $path . "/";
 
     if($path == "sites/all/modules/islandora_bioinformatics_lcms/") {
-      $path = "sites/all/modules/islandora_lab_object_lcms/"
+      $path = "sites/all/modules/islandora_lab_object_lcms/";
     }
 
     //Create a lcmsect properties array for the construction and ingestion of an lcms object.
