@@ -224,7 +224,7 @@ function islandora_lab_object_load_ingest_configuration(AbstractObject $collecti
 
   return array(
     'collection' => $collection,
-    'models' => array_keys($policy->getContentModels()),
+    'models' => array('islandora:lcms_cmodel'),//array_keys($policy->getContentModels()),
     'objects' => array($object),
     'parent' => $collection->id,
   );
