@@ -352,4 +352,51 @@ function lcms_LCMS_to_array($lcms_object) {
   return $lcms_metadata;
 }
 
+function islandora_lab_object_lcms_form_related_lcms_form_alter(&$form, &$form_state) {
+/** 
+* @author Dalton Mackenzie
+* @param &$form
+* @param &$form_state
+*
+* Alters the islandora_related_objects_base form to display lcms information.
+* LCMS info displayed should include experiment title, seq name and user.
+*/
+  $object = $form_state['object'];
+  $lcms_objects = $form_state['related_objects'];
+  $ahead['cmodel'] = array(
+    '#markup' => 'LCMS',
+    '#prefix' => '<h1>',
+    '#suffix' => '</h1>',
+  );  
 
+  $form = $ahead + $form;
+
+  $header = array(
+    'lab_id' => t("Lab ID"),
+    'run_title' => t("Run"),
+    'seq_name' => t("Sequence Name"),
+    'user' => t("Researcher"),
+  );  
+
+  $options = array();
+  
+  foreach($lcms_objects as $lcms_object) {
+    $cur_lcms_metadata = lcms_LCMS_to_array($lcms_object);
+    $lcms_url = "<a href='/islandora/object/{$lcms_object->id}'>{$cur_lcms_metadata['identifier']}</a>";
+    $options[$lcms_object->id] = array(
+      'lab_id' => $lcms_url,
+      'run_title' => $cur_lcms_metadata['run_title'],
+      'seq_name' => $cur_lcms_metadata['seq_name'],
+      'user' => $cur_lcms_metadata['user_select'],
+      '#attributes' => array("style" => "max-height: 100px;"),
+    );  
+  }
+  $form['table'] = array(
+    '#type' => 'tableselect',
+    '#header' => $header,
+    '#options' => $options,
+    '#empty' => t("There are no related lcms objects."),
+  );  
+
+  return $form;
+}
