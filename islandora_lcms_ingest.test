@@ -23,8 +23,8 @@ class IslandoraLCMSIngestTestCase extends IslandoraWebTestCase {
 
   public static function getInfo() {
     return array(
-      'name' => 'LCMS Ingest Test',
-      'description' => 'Ingests an lcms',
+      'name' => 'LCMS Ingest/Purge Test',
+      'description' => 'Ingests and deletes an lcms object',
       'group' => 'Islandora LCMS',
     );
   }
@@ -84,31 +84,31 @@ class IslandoraLCMSIngestTestCase extends IslandoraWebTestCase {
     
     $lcms_datastream_dc = array(); //Init the Dublin Core datastream
     $lcms_datastream_dc['dsid'] = 'DC';  //dsid comes from the ds composite model in the xml directory
-    $lcms_datastream_dc['path'] = 'fixtures/example_lcms_dc.xml'; //Path to the file containing the datastream
+    $lcms_datastream_dc['path'] = $path . 'fixtures/example_lcms_dc.xml'; //Path to the file containing the datastream
     $lcms_datastream_dc['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
     $lcms_datastream_dc['mimetype'] = 'text/xml';
 
     $lcms_datastream_lcms = array(); //Init the LCMS datastream
     $lcms_datastream_lcms['dsid'] = 'LCMS'; //dsid comes from the ds composite model in the xml directory
-    $lcms_datastream_lcms['path'] = 'fixtures/example_lcms_lcms.xml'; //Path to the file containing the datastream
+    $lcms_datastream_lcms['path'] = $path . 'fixtures/example_lcms_lcms.xml'; //Path to the file containing the datastream
     $lcms_datastream_lcms['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
     $lcms_datastream_lcms['mimetype'] = 'text/xml';
 
     $lcms_datastream_relsext = array(); //Init the RELS-EXT datastream
     $lcms_datastream_relsext['dsid'] = 'RELS-EXT'; //dsid comes from the ds composite model in the xml directory
-    $lcms_datastream_relsext['path'] = 'fixtures/example_lcms_relsext.rdf'; //Path to the file containing the datastream
+    $lcms_datastream_relsext['path'] = $path . 'fixtures/example_lcms_relsext.rdf'; //Path to the file containing the datastream
     $lcms_datastream_relsext['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
     $lcms_datastream_relsext['mimetype'] = 'text/xml';
 
     $lcms_datastream_raw = array(); //Init the RAW datastream
     $lcms_datastream_raw['dsid'] = 'RAW'; //dsid comes from the ds composite model in the xml directory
-    $lcms_datastream_raw['path'] = 'fixtures/example_lcms_raw.raw'; //Path to the file containing the datastream
+    $lcms_datastream_raw['path'] = $path . 'fixtures/example_lcms_raw.raw'; //Path to the file containing the datastream
     $lcms_datastream_raw['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
     $lcms_datastream_raw['mimetype'] = 'text/plain';
     
     $lcms_datastream_csv = array(); //Init the CSV datastream
     $lcms_datastream_csv['dsid'] = 'CSV'; //dsid comes from the ds composite model in the xml directory
-    $lcms_datastream_csv['path'] = 'fixtures/example_lcms_csv.csv'; //Path to the file containing the datastream
+    $lcms_datastream_csv['path'] = $path . 'fixtures/example_lcms_csv.csv'; //Path to the file containing the datastream
     $lcms_datastream_csv['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
     $lcms_datastream_csv['mimetype'] = 'text/csv';
     
