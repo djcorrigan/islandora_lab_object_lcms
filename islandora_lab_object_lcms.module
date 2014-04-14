@@ -61,8 +61,14 @@ function islandora_lab_object_lcms_forms($form_id, $args){
   return $forms;
 }
 
-/**
+ /**
+ * @function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $connection)
+ *
  * * Implements hook_islandora_required_objects()
+ * 
+ *  @author Dalton Mackenzie <demackenzie@upei.ca>
+ *
+ *
  * */
 function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $connection) {
   module_load_include('inc', 'islandora_bioinformatics_base', 'base_functions');
@@ -116,6 +122,7 @@ function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $co
 }
 
 
+
 function islandora_lab_object_lcms_islandora_xml_form_builder_forms() {
   $module_path = drupal_get_path('module', 'islandora_lab_object_lcms');
   return array(
@@ -135,7 +142,6 @@ function islandora_lab_object_lcms_islandora_xml_form_builder_form_associations(
       'dsid' => 'LCMS',
       'title_field' => array('run_title'),
       'transform' => '',
-      //'self_transform' => "$module_path/xml/islandora_lab_object_lcms_transform.xsl",
       'template' => FALSE,
     ),
   );
