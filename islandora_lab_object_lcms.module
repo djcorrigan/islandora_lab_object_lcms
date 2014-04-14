@@ -278,37 +278,37 @@ function lcms_LCMS_to_array($lcms_object) {
        
         //Get the sample intro
         $samp_intro = $part->sample_intro;
-        $lcms_metadata["samp_intro"] = ((string)$samp_intro) ? (string)$samp_intro:"";
+        $lcms_metadata["samp_intro"] = ((string)$samp_intro ? (string)$samp_intro:"");
         //Get the different detection ionization values
         $esi_neg = $part->detection_ionization->esi_neg;
-        $lcms_metadata["esi_neg"] = ((string)$esi_neg) ? (string)$esi_neg:"";
+        $lcms_metadata["esi_neg"] = ((string)$esi_neg ? (string)$esi_neg:"");
         $esi_pos = $part->detection_ionization->esi_pos;
-        $lcms_metadata["esi_pos"] = ((string)$esi_pos) ? (string)$esi_pos:"";
+        $lcms_metadata["esi_pos"] = ((string)$esi_pos ? (string)$esi_pos:"");
         $apci_neg = $part->detection_ionization->apci_neg;
-        $lcms_metadata["apci_neg"] = ((string)$apci_neg) ? (string)$apci_neg:"";
+        $lcms_metadata["apci_neg"] = ((string)$apci_neg ? (string)$apci_neg:"");
         $apci_pos = $part->detection_ionization->apci_pos;
-        $lcms_metadata["apci_pos"] = ((string)$apci_pos) ? (string)$apci_pos:"";
+        $lcms_metadata["apci_pos"] = ((string)$apci_pos ? (string)$apci_pos:"");
         $pda = $part->detection_ionization->pda;
-        $lcms_metadata["pda"] = ((string)$pda) ? (string)$pda:"";
+        $lcms_metadata["pda"] = ((string)$pda ? (string)$pda:"");
         $elsd = $part->detection_ionization->elsd;
-        $lcms_metadata["elsd"] = ((string)$elsd) ? (string)$elsd:"";
+        $lcms_metadata["elsd"] = ((string)$elsd ? (string)$elsd:"");
         $ei = $part->detection_ionization->ei;
-        $lcms_metadata["ei"] = ((string)$ei) ? (string)$ei:"";
+        $lcms_metadata["ei"] = ((string)$ei ? (string)$ei:"");
         //Get the mass range
         $mass_range = $part->mass_range;
-        $lcms_metadata["mass_range"] = ((string)$mass_range ? (string)$mass_range:"";
+        $lcms_metadata["mass_range"] = ((string)$mass_range ? (string)$mass_range:"");
         //Get the lc solvent system
         $lc_solvent_sys = $part->lc_solvent_system;
-        $lcms_metadata["lc_solvent_sys"] = ((string)$lc_solvent_sys ? (string)$lc_solvent_sys:"";
+        $lcms_metadata["lc_solvent_sys"] = ((string)$lc_solvent_sys ? (string)$lc_solvent_sys:"");
         //Get the types of analysis
         $types_of_analysis = $part->types_of_analysis;
-        $lcms_metadata["types_of_analysis"] = ((string)$types_of_analysis ? (string)$types_of_analysis:"";
+        $lcms_metadata["types_of_analysis"] = ((string)$types_of_analysis ? (string)$types_of_analysis:"");
         //Get the specific analysis
         $specific_analysis = $part->specific_analysis;
-        $lcms_metadata["specific_analysis"] = ((string)$specific_analysis ? (string)$specific_analysis:"";
+        $lcms_metadata["specific_analysis"] = ((string)$specific_analysis ? (string)$specific_analysis:"");
         //Get the ions of interest
         $ions_of_interest = $part->ions_of_interest;
-        $lcms_metadata["ions_of_interest"] = ((string)$ions_of_interest ? (string)$ions_of_interest:"";
+        $lcms_metadata["ions_of_interest"] = ((string)$ions_of_interest ? (string)$ions_of_interest:"");
 
         break;
       case "internal_use_only":
