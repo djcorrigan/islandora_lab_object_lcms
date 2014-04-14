@@ -68,10 +68,6 @@ class IslandoraLCMSIngestTestCase extends IslandoraWebTestCase {
     $path = drupal_get_path('module','islandora_lab_object_lcms');
     $path = $path . "/";
 
-    if($path == "sites/all/modules/islandora_bioinformatics_lcms/") {
-      $path = "sites/all/modules/islandora_lab_object_lcms/";
-    }
-
     //Create a lcmsect properties array for the construction and ingestion of an lcms object.
     $lcms_properties = array();   //init the array
     $lcms_properties['label'] = 'lcms_test';   //Give it a label
