@@ -376,8 +376,6 @@ function islandora_lab_object_lcms_form_related_lcms_form_alter(&$form, &$form_s
     '#suffix' => '</h1>',
   );  
 
-  $form = $ahead + $form;
-
   $header = array(
     'lab_id' => t("Lab ID"),
     'run_title' => t("Run"),
