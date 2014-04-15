@@ -240,6 +240,8 @@ function islandora_lab_object_load_ingest_configuration(AbstractObject $collecti
 function lcms_LCMS_to_array($lcms_object) {
   
   $ns = "http://107.170.42.52/lcms.xsd";
+  if(! $lcms_object['LCMS']->content)
+    return array();
   $lcms_xml = new SimpleXMLElement($lcms_object["LCMS"]->content);
 
   $lcms_metadata = array();
