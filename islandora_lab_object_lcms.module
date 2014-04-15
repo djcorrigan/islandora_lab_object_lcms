@@ -19,7 +19,6 @@ function islandora_lab_object_lcms_menu(){
   );
 }
 */
-lcms_LCMS_to_array(islandora_object_load("islandora:935"));
 function islandora_lab_object_lcms_forms($form_id, $args){
   /**
    * @author Nolan Phillips ncphillips@upei.ca
