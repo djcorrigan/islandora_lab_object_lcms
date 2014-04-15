@@ -103,7 +103,7 @@ function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $co
 
   // relationships between lcms and specimen/assay
   $specimen_cm = islandora_object_load("islandora:specimen_cmodel");
-  $assay_cm = islandora_object_load("islandora:assay_cmodel");
+  $assay_cm = islandora_object_load("islandora:fraction_cmodel");
 
   add_hasPart($specimen_cm, "islandora:lcms_cmodel");
   add_hasPart($assay_cm, "islandora:lcms_cmodel");
