@@ -110,6 +110,7 @@ function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $co
       'title' => 'LCMS',
       'objects' => array(
           $lcms_cm,
+          $lcms_collection,
       ),
     ),
   );
