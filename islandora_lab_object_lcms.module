@@ -103,7 +103,7 @@ function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $co
   $datastream->setContentFromFile("$module_path/xml/lcms_collection_policy.xml", FALSE);
   $lcms_collection->ingestDatastream($datastream);
 
-  add_isPartOf($lcms_cm, "islandora:fraction_cmodel");
+  $lcms_cm->relationships->add(FEDORA_RELS_EXT_URI, 'datarel_isPartOf', 'islandora:fraction_cmodel');
 
   return array(
     'islandora_lab_object_lcms' => array(
