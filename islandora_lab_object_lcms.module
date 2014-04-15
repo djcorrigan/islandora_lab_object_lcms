@@ -142,7 +142,7 @@ function islandora_lab_object_lcms_islandora_xml_form_builder_form_associations(
   );
 }
 
-function islandora_lab_object_lcms_islandora_lcms_cm_islandora_ingest_steps(array $configuration) {
+function islandora_lab_object_lcms_islandora_lcms_cmodel_islandora_ingest_steps(array $configuration) {
   return array(
     'islandora_lab_object_lcms_csv_file_upload' => array(
       'weight' => 8,
