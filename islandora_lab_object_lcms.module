@@ -7,6 +7,7 @@ Module for LCMS
 
 */
 
+/*
 function islandora_lab_object_lcms_menu(){
   return array(
     'islandora/object/%islandora_object/test_ingest_lcms' => array(
@@ -17,6 +18,7 @@ function islandora_lab_object_lcms_menu(){
       )
   );
 }
+*/
 
 
 function islandora_lab_object_lcms_forms($form_id, $args){
@@ -76,7 +78,7 @@ function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $co
   $module_path = drupal_get_path('module', 'islandora_lab_object_lcms');
   $lcms_cm = $connection->repository->constructObject('islandora:lcms_cmodel');
   $lcms_cm->owner = 'fedoraAdmin';
-  $lcms_cm->label = 'Bioinformatics LCMS Content Model';
+  $lcms_cm->label = 'LCMS Content Model';
   $lcms_cm->models = 'fedora-system:ContentModel-3.0';
 
   // RELS
@@ -102,18 +104,13 @@ function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $co
   $lcms_collection->ingestDatastream($datastream);
 
   // relationships between lcms and specimen/assay
-  $specimen_cm = islandora_object_load("islandora:specimen_cmodel");
-  $assay_cm = islandora_object_load("islandora:assay_cmodel");
-
-  add_hasPart($specimen_cm, "islandora:lcms_cmodel");
+  $assay_cm = islandora_object_load("islandora:fraction_cmodel");
   add_hasPart($assay_cm, "islandora:lcms_cmodel");
-
-  add_isPartOf($lcms_cm, "islandora:specimen_cmodel");
-  add_isPartOf($lcms_cm, "islandora:assay_cmodel");
+  add_isPartOf($lcms_cm, "islandora:fraction_cmodel");
 
   return array(
     'islandora_lab_object_lcms' => array(
-      'title' => 'Bioinformatics LCMS',
+      'title' => 'LCMS',
       'objects' => array(
           $lcms_cm,
       ),
@@ -187,7 +184,6 @@ function islandora_lab_object_lcms_islandora_lcms_cm_islandora_view_object($obje
  * @author Quintin Dawson qdawson@upei.ca
  * This function should create a new lcms object and create a relationship between it and the $parent object
  */
-
 function islandora_lab_object_lcms_ingest(AbstractObject $parent) {
   $collection = islandora_object_load('islandora:lcms_collection');
   if($collection !== FALSE) {
@@ -374,7 +370,7 @@ function islandora_lab_object_lcms_form_related_lcms_form_alter(&$form, &$form_s
 */
   $object = $form_state['object'];
   $lcms_objects = $form_state['related_objects'];
-  $ahead['cmodel'] = array(
+  $form['cmodel'] = array(
     '#markup' => 'LCMS',
     '#prefix' => '<h1>',
     '#suffix' => '</h1>',
