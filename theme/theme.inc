@@ -6,7 +6,7 @@
 *
 */
 
-function islandora_bioinformatics_lcms_preprocess_islandora_lab_object_lcms_upload_form(array &$variables) {
+function islandora_lab_object_lcms_preprocess_islandora_lab_object_lcms_upload_form(array &$variables) {
   echo "lcms upload form preprocess";
   $islandora_object = $variables['islandora_object'];
   // CSV and RAW 
