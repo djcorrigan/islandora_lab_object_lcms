@@ -359,6 +359,23 @@ function lcms_LCMS_to_array($lcms_object) {
   return $lcms_metadata;
 }
 
+
+/**
+ * This takes in an islandora LCMS object and will return an array
+ * representation of the object
+ * @param $lcms_obj
+ *  An islandora LCMS object
+ * @return array
+ *  A simple array representing an LCMS object
+ */
+function lcms_object_to_array($lcms_obj) {
+
+  
+
+  return $lcms_array;
+
+}
+
 function islandora_lab_object_lcms_form_related_lcms_form_alter(&$form, &$form_state) {
 /** 
 * @author Dalton Mackenzie

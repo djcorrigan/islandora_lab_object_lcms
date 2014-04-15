@@ -2,10 +2,10 @@
 <definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3">
   <properties>
     <root_name>lcms:lcms</root_name>
-    <schema_uri>http://107.170.42.52/lcms.xsd</schema_uri>
-    <namespaces default="http://107.170.42.52">
+    <schema_uri>http://137.149.157.10/schemas/lcms.xsd</schema_uri>
+    <namespaces default="http://137.149.157.10">
       <namespace prefix="xlink">http://www.w3.org/1999/xlink</namespace>
-      <namespace prefix="lcms">http://107.170.42.52</namespace>
+      <namespace prefix="lcms">http://137.149.157.10</namespace>
       <namespace prefix="xsi">http://www.w3.org/2001/XMLSchema-instance</namespace>
     </namespaces>
   </properties>
