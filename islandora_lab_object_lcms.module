@@ -103,12 +103,6 @@ function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $co
   $datastream->setContentFromFile("$module_path/xml/lcms_collection_policy.xml", FALSE);
   $lcms_collection->ingestDatastream($datastream);
 
-  // relationships between lcms and specimen/assay
-  $specimen_cm = islandora_object_load("islandora:specimen_cmodel");
-  $fraction_cm = islandora_object_load("islandora:fraction_cmodel");
-
-  add_hasPart($specimen_cm, "islandora:lcms_cmodel");
-  add_hasPart($fraction_cm, "islandora:lcms_cmodel");
   add_isPartOf($lcms_cm, "islandora:fraction_cmodel");
 
   return array(
