@@ -1,4 +1,4 @@
-name = "Islandora Bioinformatics LCMS"
+name = "Islandora Lab Object LCMS"
 description = "Extends the Islandora Bioinformatics Package to deal with LCMS data files."
 dependencies[] = islandora
 files[] = islandora_lcms_ingest.test
