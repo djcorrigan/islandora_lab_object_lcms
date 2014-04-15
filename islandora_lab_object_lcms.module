@@ -370,7 +370,20 @@ function lcms_LCMS_to_array($lcms_object) {
  */
 function lcms_object_to_array($lcms_obj) {
 
-  
+  $ns = "http://137.149.157.10";  // I don't know the correct way to host
+                                  // schemas
+
+  $lcms_array = array();
+
+  $lcms_xml = new SimpleXMLElement($lcms_obj['lcms']->content);
+
+  foreach ($lcms_xml->children($ns) as $part) {
+
+    echo $part->getName;
+    switch ((string) $part->getName) {
+
+    }
+  }
 
   return $lcms_array;
 
