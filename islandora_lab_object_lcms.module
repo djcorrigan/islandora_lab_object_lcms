@@ -132,7 +132,7 @@ function islandora_lab_object_lcms_islandora_xml_form_builder_form_associations(
   $module_path = drupal_get_path('module', 'islandora_lab_object_lcms');
   return array(
     'islandora_lab_object_lcms_form' => array(
-      'content_model' => 'islandora:lcms_cm',
+      'content_model' => 'islandora:lcms_cmodel',
       'form_name' => 'LCMS Form',
       'dsid' => 'LCMS',
       'title_field' => array('run_title'),
