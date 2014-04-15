@@ -7,16 +7,18 @@ Module for LCMS
 
 */
 
+/*
 function islandora_lab_object_lcms_menu(){
   return array(
     'islandora/object/%islandora_object/test_ingest_lcms' => array(
         'title' => 'Ingest LCMS',
-        'page callback' => 'islandora_bioinformatics_lcms_lab_object_lcms_ingest',
+        'page callback' => 'islandora_lab_object_lcms_ingest',
         'page arguments' => array(2),
         'access callback' => TRUE,
       )
   );
 }
+*/
 
 
 function islandora_lab_object_lcms_forms($form_id, $args){
@@ -76,7 +78,7 @@ function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $co
   $module_path = drupal_get_path('module', 'islandora_lab_object_lcms');
   $lcms_cm = $connection->repository->constructObject('islandora:lcms_cmodel');
   $lcms_cm->owner = 'fedoraAdmin';
-  $lcms_cm->label = 'Bioinformatics LCMS Content Model';
+  $lcms_cm->label = 'LCMS Content Model';
   $lcms_cm->models = 'fedora-system:ContentModel-3.0';
 
   // RELS
@@ -103,17 +105,15 @@ function islandora_lab_object_lcms_islandora_required_objects(IslandoraTuque $co
 
   // relationships between lcms and specimen/assay
   $specimen_cm = islandora_object_load("islandora:specimen_cmodel");
-  $assay_cm = islandora_object_load("islandora:fraction_cmodel");
+  $fraction_cm = islandora_object_load("islandora:fraction_cmodel");
 
   add_hasPart($specimen_cm, "islandora:lcms_cmodel");
-  add_hasPart($assay_cm, "islandora:lcms_cmodel");
-
-  add_isPartOf($lcms_cm, "islandora:specimen_cmodel");
-  add_isPartOf($lcms_cm, "islandora:assay_cmodel");
+  add_hasPart($fraction_cm, "islandora:lcms_cmodel");
+  add_isPartOf($lcms_cm, "islandora:fraction_cmodel");
 
   return array(
     'islandora_lab_object_lcms' => array(
-      'title' => 'Bioinformatics LCMS',
+      'title' => 'LCMS',
       'objects' => array(
           $lcms_cm,
       ),
@@ -187,11 +187,10 @@ function islandora_lab_object_lcms_islandora_lcms_cm_islandora_view_object($obje
  * @author Quintin Dawson qdawson@upei.ca
  * This function should create a new lcms object and create a relationship between it and the $parent object
  */
-
-function islandora_bioinformatics_lcms_lab_object_lcms_ingest(AbstractObject $parent) {
+function islandora_lab_object_lcms_ingest(AbstractObject $parent) {
   $collection = islandora_object_load('islandora:lcms_collection');
   if($collection !== FALSE) {
-    if (($configuration = islandora_bioinformatics_lcms_lab_object_load_ingest_configuration($collection)) !== FALSE) {
+    if (($configuration = islandora_lab_object_load_ingest_configuration($collection, $parent)) !== FALSE) {
       module_load_include('inc', 'islandora', 'includes/ingest.form');
       return drupal_get_form('islandora_ingest_form', $configuration);
     }
@@ -200,7 +199,7 @@ function islandora_bioinformatics_lcms_lab_object_lcms_ingest(AbstractObject $pa
 }
 
 
-function islandora_bioinformatics_lcms_lab_object_load_ingest_configuration(AbstractObject $collection) {
+function islandora_lab_object_load_ingest_configuration(AbstractObject $collection, AbstractObject $parent) {
   $is_collection_object = in_array('islandora:collectionCModel', $collection->models);
   $has_policy = isset($collection['COLLECTION_POLICY']);
   if (!$is_collection_object || !$has_policy) {
@@ -215,11 +214,16 @@ function islandora_bioinformatics_lcms_lab_object_load_ingest_configuration(Abst
     $object->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', $collection->id);
   }
 
+  $results = $object->relationships->get(FEDORA_RELS_EXT_URI, 'isPartOf', $parent->id);
+  if (empty($results)) {
+    $object->relationships->add(FEDORA_RELS_EXT_URI, 'isPartOf', $parent->id);
+  }
+
   $policy = new CollectionPolicy($collection['COLLECTION_POLICY']->content);
 
   return array(
     'collection' => $collection,
-    'models' => array_keys($policy->getContentModels()),
+    'models' => array('islandora:lcms_cmodel'),//array_keys($policy->getContentModels()),
     'objects' => array($object),
     'parent' => $collection->id,
   );
@@ -369,13 +373,11 @@ function islandora_lab_object_lcms_form_related_lcms_form_alter(&$form, &$form_s
 */
   $object = $form_state['object'];
   $lcms_objects = $form_state['related_objects'];
-  $ahead['cmodel'] = array(
+  $form['cmodel'] = array(
     '#markup' => 'LCMS',
     '#prefix' => '<h1>',
     '#suffix' => '</h1>',
   );  
-
-  $form = $ahead + $form;
 
   $header = array(
     'lab_id' => t("Lab ID"),
