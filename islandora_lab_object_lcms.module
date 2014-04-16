@@ -354,9 +354,6 @@ function lcms_LCMS_to_array($lcms_object) {
       }
   }
 
-  echo "<pre>";
-  print_r($lcms_metadata);
-  echo "</pre>";
   return $lcms_metadata;
 }
 
