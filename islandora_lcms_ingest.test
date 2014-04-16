@@ -65,7 +65,7 @@ class IslandoraLCMSIngestTestCase extends IslandoraWebTestCase {
     //Gets the path to prepend to fixtures/$datastream_file for the different datastream files
     //that need to be added to the object for the ingest test.
 
-    $path = drupal_get_path('module','islandora_lab_object_lcms');
+    $path = drupal_get_path('module', 'islandora_lab_object_lcms');
     $path = $path . "/";
 
     //Create a lcmsect properties array for the construction and ingestion of an lcms object.
