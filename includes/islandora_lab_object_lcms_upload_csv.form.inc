@@ -40,5 +40,5 @@ function islandora_lab_object_lcms_upload_csv_form_submit(array $form, array &$f
   $csv_path = drupal_realpath($csv_file->uri);
   $ds->setContentFromFile($csv_path, FALSE);
   $ds->label = $csv_file->filename;
-  $ds->mimetype = $csv_file->filemime;
+  $ds->mimetype = "application/csv";
 }

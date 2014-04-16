@@ -40,6 +40,6 @@ function islandora_lab_object_lcms_upload_raw_form_submit(array $form, array &$f
   $raw_path = drupal_realpath($raw_file->uri);
   $ds->setContentFromFile($raw_path, FALSE);
   $ds->label = $raw_file->filename;
-  $ds->mimetype = $raw_file->filemime;
+  $ds->mimetype = "application/raw";
 }
 
