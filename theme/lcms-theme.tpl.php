@@ -107,6 +107,56 @@ echo "</pre>";
         <td>Types of Analysis</td>
         <td><?php echo $variables['LCMS_DATA']['types_of_analysis']; ?></td>
       </tr>
+
+      <tr>
+        <td>Specific Analysis</td>
+        <td><?php echo $variables['LCMS_DATA']['specific_analysis']; ?></td>
+      </tr>
+
+      <tr>
+        <td>Ions of Interest</td>
+        <td><?php echo $variables['LCMS_DATA']['ions_of_interest']; ?></td>
+      </tr>
+
+      <tr>
+        <td>Analyst</td>
+        <td><?php echo $variables['LCMS_DATA']['analyst']; ?></td>
+      </tr>
+
+      <tr>
+        <td>Date</td>
+        <td><?php echo $variables['LCMS_DATA']['date']; ?></td>
+      </tr>
+
+      <tr>
+        <td>Instrument</td>
+        <td><?php echo $variables['LCMS_DATA']['instrument']; ?></td>
+      </tr>
+
+      <tr>
+        <td>Method</td>
+        <td><?php echo $variables['LCMS_DATA']['method']; ?></td>
+      </tr>
+
+      <tr>
+        <td>Solvent System</td>
+        <td><?php echo $variables['LCMS_DATA']['solvent_system']; ?></td>
+      </tr>
+
+      <tr>
+        <td>Columns Used</td>
+        <td><?php echo $variables['LCMS_DATA']['columns_used']; ?></td>
+      </tr>
+
+      <tr>
+        <td>Data Path</td>
+        <td><?php echo $variables['LCMS_DATA']['data_path']; ?></td>
+      </tr>
+
+      <tr>
+        <td>Comments for Analyst</td>
+        <td><?php echo $variables['LCMS_DATA']['comments_for_analyst']; ?></td>
+      </tr>
     </table>
   </div>
 </div>
