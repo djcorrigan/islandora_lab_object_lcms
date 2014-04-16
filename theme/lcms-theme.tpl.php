@@ -20,7 +20,7 @@ echo "</pre>";
     <table>
       <tr>
         <td>Run Title</td>
-        <td><?php $variables["LCMS_DATA"]["run_title"] ?></td>
+        <td><?php echo $variables["LCMS_DATA"]["run_title"] ?></td>
       </tr>
     </table>
   </div>
