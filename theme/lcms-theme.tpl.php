@@ -15,7 +15,7 @@ $path = drupal_get_path('module', 'islandora_lab_object_lcms');
 <div class="islandora-lcms-object islandora">
   <div class ="lcms_data">
     <pre>
-  <?php print_r $variables["LCMS_DATA"] ?>
+  <?php print_r ($variables["LCMS_DATA"]) ?>
       </pre>
   </div>
 </div>
