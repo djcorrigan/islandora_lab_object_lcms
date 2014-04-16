@@ -241,6 +241,8 @@ function lcms_LCMS_to_array($lcms_object) {
   if(! $lcms_object['LCMS']->content)
     return array();
   $lcms_xml = new SimpleXMLElement($lcms_object["LCMS"]->content);
+  $lcms_csv = $lcms_object['CSV'];
+  $lcms_raw = $lcms_object['RAW'];
 
   $lcms_metadata = array();
 
@@ -354,6 +356,8 @@ function lcms_LCMS_to_array($lcms_object) {
       }
   }
 
+  $lcms_metadata["CSV"] = $lcms_csv;
+  $lcms_metadata["RAW"] = $lcms_raw;
   return $lcms_metadata;
 }
 
