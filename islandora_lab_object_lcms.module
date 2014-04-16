@@ -19,7 +19,7 @@ function islandora_lab_object_lcms_menu(){
   );
 }
 */
-function islandora_lab_object_lcms_forms($form_id, $args){
+function islandora_lab_object_lcms_forms($form_id, $args) {
   /**
    * @author Nolan Phillips ncphillips@upei.ca
    *
@@ -32,7 +32,7 @@ function islandora_lab_object_lcms_forms($form_id, $args){
    * This function is used to associate a new Form ID with an existing form constructor.
    */
   $forms = array();
-  switch($form_id){
+  switch ($form_id) {
     /**
      * ## Related LCMS Form
      * __Form ID:__ `related_lcms_form`
@@ -47,7 +47,7 @@ function islandora_lab_object_lcms_forms($form_id, $args){
      */
     case 'related_lcms_form':
       $cmodels = array('islandora:lcms_cmodel');
-      $relationships = array(FEDORA_RELS_EXT_URI => array('isPartOf', 'isMemberOf',),);
+      $relationships = array(FEDORA_RELS_EXT_URI => array('isPartOf', 'isMemberOf', ), );
 
       $args[] = $cmodels;
       $args[] = $relationships;
@@ -182,7 +182,7 @@ function islandora_lab_object_lcms_islandora_lcms_cmodel_islandora_view_object($
  */
 function islandora_lab_object_lcms_ingest(AbstractObject $parent) {
   $collection = islandora_object_load('islandora:lcms_collection');
-  if($collection !== FALSE) {
+  if ($collection !== FALSE) {
     if (($configuration = islandora_lab_object_load_ingest_configuration($collection, $parent)) !== FALSE) {
       module_load_include('inc', 'islandora', 'includes/ingest.form');
       return drupal_get_form('islandora_ingest_form', $configuration);
@@ -238,7 +238,7 @@ function islandora_lab_object_load_ingest_configuration(AbstractObject $collecti
 function lcms_LCMS_to_array($lcms_object) {
   
   $ns = "http://137.149.157.10";
-  if(! $lcms_object['LCMS']->content)
+  if (!$lcms_object['LCMS']->content)
     return array();
   $lcms_xml = new SimpleXMLElement($lcms_object["LCMS"]->content);
   $lcms_csv = $lcms_object['CSV'];
@@ -417,7 +417,7 @@ function islandora_lab_object_lcms_form_related_lcms_form_alter(&$form, &$form_s
 
   $options = array();
   
-  foreach($lcms_objects as $lcms_object) {
+  foreach ($lcms_objects as $lcms_object) {
     $cur_lcms_metadata = lcms_LCMS_to_array($lcms_object);
     $lcms_url = "<a href='/islandora/object/{$lcms_object->id}'>{$cur_lcms_metadata['identifier']}</a>";
     $options[$lcms_object->id] = array(
