@@ -14,8 +14,11 @@ $path = drupal_get_path('module', 'islandora_lab_object_lcms');
 
 <div class="islandora-lcms-object islandora">
   <div class ="lcms_data">
-    <pre>
-  <?php print_r ($variables["LCMS_DATA"]) ?>
-      </pre>
+    <table>
+      <tr>
+        <td>Run Title</td>
+        <td><?php $variables["LCMS_DATA"]["run_title"] ?></td>
+      </tr>
+    </table>
   </div>
 </div>
