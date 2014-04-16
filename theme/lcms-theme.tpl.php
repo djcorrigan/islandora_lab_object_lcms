@@ -13,6 +13,9 @@ $path = drupal_get_path('module', 'islandora_lab_object_lcms');
 echo "<pre>";
 var_dump($variables["LCMS_DATA"]);
 echo "</pre>";
+
+$csv_url = "/islandora/object/{$islandora_object->id}/datastream/CSV/view";
+$raw_url = "/islandora/object/{$islandora_object->id}/datastream/RAW/view";
 ?>
 
 <div class="islandora-lcms-object islandora">
@@ -158,15 +161,7 @@ echo "</pre>";
         <td>Comments for Analyst</td>
         <td><?php echo $variables['LCMS_DATA']['comments_for_analyst']; ?></td>
       </tr>
-      <tr>
-        <td>CSV File</td>
-        <td>
-          <?php
-            $csv_url = "/islandora/object/{$islandora_object->id}/datastream/CSV/view";
-            $raw_url = "/islandora/object/{$islandora_object->id}/datastream/RAW/view";
-          ?>
-        </td>
-      </tr>
+
       <tr>
         <td colspan="2"><a href="<?php echo $csv_url; ?>"> CSV File </a></td>
       </tr>
