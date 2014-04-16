@@ -14,8 +14,8 @@ echo "<pre>";
 var_dump($variables["LCMS_DATA"]);
 echo "</pre>";
 
-$csv_url = "/islandora/object/{$islandora_object->id}/datastream/CSV/view";
-$raw_url = "/islandora/object/{$islandora_object->id}/datastream/RAW/view";
+$csv_url = "/islandora/object/{$islandora_object->id}/datastream/CSV/download";
+$raw_url = "/islandora/object/{$islandora_object->id}/datastream/RAW/download";
 ?>
 
 <div class="islandora-lcms-object islandora">
