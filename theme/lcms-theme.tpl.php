@@ -17,6 +17,7 @@ echo "</pre>";
 
 <div class="islandora-lcms-object islandora">
   <div class ="lcms_data">
+
     <table>
       <tr>
         <td>Run Title</td>
@@ -156,6 +157,21 @@ echo "</pre>";
       <tr>
         <td>Comments for Analyst</td>
         <td><?php echo $variables['LCMS_DATA']['comments_for_analyst']; ?></td>
+      </tr>
+      <tr>
+        <td>CSV File</td>
+        <td>
+          <?php
+            $csv_url = "/islandora/object/{$islandora_object->id}/datastream/CSV/view";
+            $raw_url = "/islandora/object/{$islandora_object->id}/datastream/RAW/view";
+          ?>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><a href="<?php echo $csv_url; ?>"> CSV File </a></td>
+      </tr>
+      <tr>
+        <td colspan="2"><a href="<?php echo $raw_url; ?>"> RAW File </a></td>
       </tr>
     </table>
   </div>
