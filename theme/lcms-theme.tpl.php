@@ -10,10 +10,6 @@
 $islandora_content = $islandora_object['LCMS']->content;
 $path = drupal_get_path('module', 'islandora_lab_object_lcms');
 
-echo "<pre>";
-var_dump($variables["LCMS_DATA"]);
-echo "</pre>";
-
 $csv_url = "/islandora/object/{$islandora_object->id}/datastream/CSV/download";
 $raw_url = "/islandora/object/{$islandora_object->id}/datastream/RAW/download";
 ?>
